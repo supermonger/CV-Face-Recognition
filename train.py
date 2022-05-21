@@ -65,6 +65,7 @@ def train():
             train_NME = cal_NMEloss(out, landmark)
 
         train_loss = train_loss / len(train_loader.dataset)
+        train_NME = train_NME / len(train_loader.dataset)
 
         model.eval()
         with torch.no_grad():
@@ -79,7 +80,8 @@ def train():
                 valid_loss += loss.item()
                 valid_NME = cal_NMEloss(out, landmark)
 
-        valid_loss = valid_loss / len(train_loader.dataset)
+        valid_loss = valid_loss / len(valid_loader.dataset)
+        valid_NME = valid_NME / len(valid_loader.dataset)
 
         print(f"train loss is {train_loss} and NME is {train_NME}")
         print(f"validation loss is {valid_loss} and NME is {valid_NME}")
