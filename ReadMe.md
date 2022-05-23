@@ -2,3 +2,4 @@
 ### myDataset.py : read the json file and return dataloader for training
 ### myModel.py : construct model
 ### train.py : train the model
+### data_visualize.py : use the prediction to draw points on the images
