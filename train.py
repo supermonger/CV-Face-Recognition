@@ -140,5 +140,5 @@ if __name__ == "__main__":
     checkpoint = "best.pt"
     batch = 16
     train_loader, valid_loader = preprocessing(batch)
-    train(train_loader, train_loader)
+    train(train_loader, valid_loader)
     # test(checkpoint, valid_loader, batch)
