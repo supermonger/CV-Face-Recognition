@@ -7,7 +7,7 @@ import os
 import numpy as np
 
 class DataLoaderX(DataLoader):
-
+    # speed up the loading data process
     def __iter__(self):
         return BackgroundGenerator(super().__iter__())
 
