@@ -21,7 +21,7 @@ if os.path.isdir(prediction_path) is False:
     os.mkdir(prediction_path)
 
 landmark = np.zeros((68, 2), dtype=np.int32)
-for i in range(10):
+for i in range(100):
     with open(os.path.join(txt_path, txt_fname[i]), "r") as f:
         count = 0
         for line in f.readlines():
