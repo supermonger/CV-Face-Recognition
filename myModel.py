@@ -14,6 +14,7 @@ class myMobileNet_V3(nn.Module):
     def __init__(self, num_classes=2):
         super().__init__()
         self.mobilenet = mobilenet_v3_small(pretrained=True)
+        self.mobilenet.classifier[2].p = 0.5
         self.mobilenet.classifier[3] = nn.Linear(self.mobilenet.classifier[3].in_features, num_classes)
         # self.activator = ReLU384()
         # self.activator = nn.Sigmoid()
