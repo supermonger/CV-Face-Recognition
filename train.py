@@ -30,6 +30,7 @@ def preprocessing(batch=64):
             # transforms.RandomPerspective(distortion_scale=0.3, p=0.3),
             # transforms.Grayscale() paper have used, need to change model channel
             transforms.ToTensor(),
+            transforms.RandomErasing(p=0.2, scale=(0.01, 0.02), ratio=(0.75, 1.3)),
             transforms.Normalize(mean, std),
         ]
     )
@@ -51,11 +52,11 @@ def train(train_loader, valid_loader):
     print(model)
     loss_fn = nn.MSELoss()
     optimizer = optim.Adam(model.parameters(), lr=1e-5, weight_decay=1e-6)
-    scheduler = optim.lr_scheduler.StepLR(optimizer, 10, 0.2)
+    scheduler = optim.lr_scheduler.StepLR(optimizer, 10, 0.3)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     # device = torch.device("cpu")
-    num_epoch = 50
+    num_epoch = 60
     best_NME = 10**3
     model.to(device)
     
