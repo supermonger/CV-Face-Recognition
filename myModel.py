@@ -8,11 +8,9 @@ class myMobileNet_V3(nn.Module):
         self.mobilenet = mobilenet_v3_small(pretrained=True)
         self.fc1 = nn.Sequential(
             nn.Linear(self.mobilenet.classifier[3].out_features, 512),
-            nn.ReLU(),
         )
         self.fc2 = nn.Sequential(
             nn.Linear(512, 256),
-            nn.ReLU(),
         )
         self.fc3 = nn.Linear(256, num_classes)
 
